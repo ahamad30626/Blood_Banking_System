@@ -1,0 +1,12 @@
+package   com.example.demo.bloodbank.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import  com.example.demo.bloodbank.model.Donor;
+
+public interface DonorRepository extends JpaRepository<com.example.demo.bloodbank.model.Donor, Long> {
+	Optional<com.example.demo.bloodbank.model.Donor> findByUsernameAndPassword(String username, String password);
+
+}

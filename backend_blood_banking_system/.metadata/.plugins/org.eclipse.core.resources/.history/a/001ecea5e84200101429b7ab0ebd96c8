@@ -1,0 +1,37 @@
+package bloodbank.controller;
+
+import bloodbank.model.Donor;
+import bloodbank.repository.DonorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@Controller
+@RequestMapping("/api/donors")
+@CrossOrigin(origins = "http://localhost:3000")
+public class DonorController {
+
+    @Autowired
+    private DonorRepository donorRepository;
+
+    @PostMapping
+    public Donor registerDonor(@RequestBody Donor donor) {
+        return donorRepository.save(donor);
+    }
+
+    @GetMapping
+    public List<Donor> getAllDonors() {
+        return donorRepository.findAll();
+    }
+
+    @PostMapping("/login")
+    public Donor login(@RequestBody Donor loginDetails) {
+        Optional<Donor> donor = donorRepository.findByUsernameAndPassword(
+                loginDetails.getUsername(), loginDetails.getPassword());
+
+        return donor.orElse(null);
+    }
+}
