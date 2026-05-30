@@ -141,3 +141,24 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Java / Maven (backend)
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+.classpath
+.project
+.settings/
+.mvn/timing.properties
+
+# IntelliJ / VS Code
+.idea/
+*.iws
+*.ipr
+.metadata/
+
+# macOS
+.DS_Store
